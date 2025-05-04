@@ -24,7 +24,7 @@ join Sales_transaction s
 on r.TransactionID =s.TransactionID
 where rdp=1 limit 5000;
 
-/* Quesdtion - 2 */
+/* Question - 2 */
 
 /* Problem statement
 Write a query to identify the discrepancies in the price of the same product in "sales_transaction" 
@@ -45,7 +45,7 @@ st.productid in (select p.productid  from product_inventory p where st.price<>p.
 
 select * from sales_transaction;
 
-/* Quesdtion - 3 */
+/* Question - 3 */
 
 /*Problem statement
 Write a SQL query to identify the null values in the dataset and replace those by “Unknown”.
@@ -59,7 +59,7 @@ where location is NULL;
 
 select * from customer_profiles;
 
-/* Quesdtion - 4 */
+/* Question - 4 */
 /* 
 Write a SQL query to clean the DATE column in the dataset.
 	Steps:
@@ -78,7 +78,7 @@ alter table saletransaction rename Sales_transaction;
 
 select *,Transactiondate as TransactionDate_updated from Sales_transaction;
 
-/* Quesdtion - 5 */
+/* Question - 5 */
 /* Problem statement
 Write a SQL query to summarize the total sales and quantities sold per product by the company.
 (Here, the data has been already cleaned in the previous steps and from 
@@ -91,7 +91,7 @@ from Sales_transaction
 group by 1 
 order by 3 desc;
 
-/* Quesdtion - 6 */
+/* Question - 6 */
 
 /*Problem statement
 Write a SQL query to count the number of transactions per customer to understand purchase frequency.
@@ -102,7 +102,7 @@ from Sales_transaction
 group by CustomerID
 order by NumberOfTransactions desc;
 
-/* Quesdtion - 7 */
+/* Question - 7 */
 /*Problem statement
 Write a SQL query to evaluate the performance of the product categories based on the total sales 
 which help us understand the product categories which needs to be promoted in the marketing campaigns.
@@ -117,7 +117,7 @@ product_inventory p  on
 s.ProductID=P.ProductID
 group by p.category order by TotalSales desc;
 
-/* Quesdtion - 8 */
+/* Question - 8 */
 /*Problem statement
 Write a SQL query to find the top 10 products with the highest total sales revenue from the sales transactions. This will help the
 company to identify the High sales products which needs to be focused to increase the revenue of the company.
@@ -129,7 +129,7 @@ select ProductID ,
 
 /* 								QUESTIONS SET 2 -MODERATE						*/
 
-/* Quesdtion - 2.1 */
+/* Question - 2.1 */
 /* Problem statement
 Write a SQL query to find the ten products with the least amount of units sold from 
 the sales transactions, provided that at least one unit was sold for those products.
@@ -140,7 +140,7 @@ group by productID
 having sum(QuantityPurchased)>0
 order by TotalUnitsSold asc limit 10;
 
-/* Quesdtion - 2.2 */
+/* Question - 2.2 */
 /*Problem statement
 Write a SQL query to identify the sales trend to understand the revenue pattern of the company.
 */
@@ -151,7 +151,7 @@ from sales_transaction
 group by TransactionDate
 order by DATETRANS desc;
 
-/* Quesdtion - 2.3 */
+/* Question - 2.3 */
 /*Problem statement
 Write a SQL query to understand the month on month growth rate of sales of the company which will help understand the growth trend of the company.
 */
@@ -168,7 +168,7 @@ Lag(total_sales) over(order by month ) as previous_month_sales,
 as mom_growth_percentage
 from monthtran
 order by  month;
-/* Quesdtion - 2.4 */
+/* Question - 2.4 */
 /*Problem statement
 Write a SQL query that describes the number of transaction along with the total amount spent by each customer which are on the higher side 
 and will help us understand the customers who are the high frequency purchase customers in the company.
@@ -182,7 +182,7 @@ having NumberOfTransactions>10 and Totalspent >1000
 order by Totalspent desc;
 
 /*                                   QUESTIONS SET 3 -ADVANCE                                         */
-/* Quesdtion - 3.1 */
+/* Question - 3.1 */
 /* Problem statement
 Write a SQL query that describes the total number of purchases made by each 
 customer against each productID to understand the repeat customers in the company.
@@ -193,7 +193,7 @@ from sales_transaction
 group by CustomerID,ProductID
 having TimesPurchased>1
 order by TimesPurchased desc;
-/* Quesdtion - 3.2 */
+/* Question - 3.2 */
 /*Problem statement
 Write a SQL query that describes the duration between the first and 
 the last purchase of the customer in that particular company to understand the loyalty of the customer.
@@ -207,7 +207,7 @@ from Sales_transaction
 group by customerID
 having datediff(max(transactiondate),min(transactiondate))>0
 order by DaysBetweenPurchases desc;
-/* Quesdtion - 3.3 */
+/* Question - 3.3 */
 /*
 Write a SQL query that segments customers based on the total quantity of products they have purchased. Also, count the 
 number of customers in each segment which will help us target a particular segment for marketing.
